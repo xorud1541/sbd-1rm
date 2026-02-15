@@ -8,6 +8,7 @@ import { getLevel } from "@/utils/level";
 import InputForm from "@/components/InputForm";
 import ResultCard from "@/components/ResultCard";
 import SummaryCard from "@/components/SummaryCard";
+import FaqSection from "@/components/FaqSection";
 
 // TODO: Supabase DB 연동 위치
 // TODO: 기록 저장 API 추가 위치
@@ -83,7 +84,7 @@ export default function Home() {
         {/* 헤더 */}
         <header className="mb-8 text-center">
           <h1 className="text-2xl font-bold text-foreground">
-            SBD 1RM 예측기
+            3대중량 1RM 계산기
           </h1>
           <p className="mt-1 text-sm text-muted">
             스쿼트 · 벤치프레스 · 데드리프트
@@ -124,6 +125,9 @@ export default function Home() {
             )}
           </div>
         )}
+
+        {/* FAQ */}
+        <FaqSection />
 
         {/* 푸터 */}
         <footer className="mt-12 text-center text-xs text-muted/50">
