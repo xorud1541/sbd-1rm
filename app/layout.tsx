@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import JsonLd from "@/components/JsonLd";
+import Script from "next/script";
+
+const GA_ID = "G-Z8VPXN49YH";
 
 // TODO: Supabase Auth 로그인 추가 위치
 
@@ -73,6 +76,20 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko" className="dark">
+      <head>
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${GA_ID}');
+          `}
+        </Script>
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
