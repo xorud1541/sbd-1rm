@@ -6,9 +6,12 @@ import type { FormData, CalculationResult } from "@/types";
 import { calcOneRm } from "@/utils/oneRm";
 import { calcWilks } from "@/utils/wilks";
 import { getLevel } from "@/utils/level";
+import { buildRecord } from "@/utils/history";
+import { useHistory } from "@/hooks/useHistory";
 import InputForm from "@/components/InputForm";
 import ResultCard from "@/components/ResultCard";
 import SummaryCard from "@/components/SummaryCard";
+import HistorySection from "@/components/HistorySection";
 import FaqSection from "@/components/FaqSection";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 
@@ -28,6 +31,7 @@ export default function Home() {
   const [formData, setFormData] = useState<FormData>(INITIAL_FORM);
   const [result, setResult] = useState<CalculationResult | null>(null);
   const [error, setError] = useState<string>("");
+  const { history, add: addHistory, remove: removeHistory, clear: clearHistory } = useHistory();
 
   const isLiftFilled = (input: { weight: string; reps: string }) => {
     const w = parseFloat(input.weight);
@@ -79,6 +83,7 @@ export default function Home() {
     }
 
     setResult(res);
+    addHistory(buildRecord(bodyWeight, res));
   };
 
   return (
@@ -131,6 +136,13 @@ export default function Home() {
             )}
           </div>
         )}
+
+        {/* 히스토리 */}
+        <HistorySection
+          history={history}
+          onDelete={removeHistory}
+          onClearAll={clearHistory}
+        />
 
         {/* FAQ */}
         <FaqSection />

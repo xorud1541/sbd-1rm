@@ -72,6 +72,22 @@
     "maxReps": "Maximum reps allowed is 30.",
     "noLift": "Please enter weight and reps for at least one lift."
   },
+  "history": {
+    "heading": "History",
+    "empty": "No records yet. Results are saved automatically when you calculate.",
+    "tabList": "List",
+    "tabChart": "Chart",
+    "clearAll": "Clear All",
+    "clearConfirm": "Are you sure you want to delete all records?",
+    "deleteOne": "Delete",
+    "bodyWeight": "Body Weight",
+    "squat": "Squat",
+    "bench": "Bench Press",
+    "deadlift": "Deadlift",
+    "total": "Total",
+    "chartMinRecords": "At least 2 records are needed to display the chart.",
+    "chartLabel": "1RM Progress Chart"
+  },
   "footer": {
     "text": "Based on Epley · Brzycki · NSCA formulas · Male Wilks coefficients"
   },

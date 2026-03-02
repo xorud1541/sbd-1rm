@@ -72,6 +72,22 @@
     "maxReps": "반복 횟수는 최대 30회까지 입력 가능합니다.",
     "noLift": "최소 1개 종목의 중량과 반복 횟수를 입력해주세요."
   },
+  "history": {
+    "heading": "기록",
+    "empty": "아직 기록이 없습니다. 계산을 실행하면 자동으로 저장됩니다.",
+    "tabList": "목록",
+    "tabChart": "차트",
+    "clearAll": "전체 삭제",
+    "clearConfirm": "모든 기록을 삭제하시겠습니까?",
+    "deleteOne": "삭제",
+    "bodyWeight": "체중",
+    "squat": "스쿼트",
+    "bench": "벤치프레스",
+    "deadlift": "데드리프트",
+    "total": "합계",
+    "chartMinRecords": "차트를 표시하려면 기록이 2개 이상 필요합니다.",
+    "chartLabel": "1RM 성장 차트"
+  },
   "footer": {
     "text": "Epley · Brzycki · NSCA 공식 기반 · 남성 Wilks 계수"
   },

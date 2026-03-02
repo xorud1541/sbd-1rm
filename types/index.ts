@@ -23,3 +23,15 @@ export interface CalculationResult {
   wilks?: number;
   level?: string;
 }
+
+export interface HistoryRecord {
+  id: string;
+  timestamp: number;
+  bodyWeight: number;
+  squat?: number;
+  bench?: number;
+  deadlift?: number;
+  total?: number;
+  wilks?: number;
+  level?: string;
+}
