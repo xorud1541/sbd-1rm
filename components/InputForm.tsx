@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import type { FormData } from "@/types";
 
 interface InputFormProps {
@@ -9,19 +10,21 @@ interface InputFormProps {
 }
 
 const LIFTS = [
-  { key: "squat" as const, label: "스쿼트", emoji: "🏋️" },
-  { key: "bench" as const, label: "벤치프레스", emoji: "💪" },
-  { key: "deadlift" as const, label: "데드리프트", emoji: "🔥" },
-];
-
-const RIR_OPTIONS = [
-  { value: "0", label: "한계까지 했어요", icon: "🔥" },
-  { value: "1", label: "1개 더 가능했어요", icon: "💪" },
-  { value: "2", label: "2개 더 가능했어요", icon: "😊" },
-  { value: "3", label: "3개 더 가능했어요", icon: "😌" },
+  { key: "squat" as const, emoji: "🏋️" },
+  { key: "bench" as const, emoji: "💪" },
+  { key: "deadlift" as const, emoji: "🔥" },
 ];
 
 export default function InputForm({ formData, onChange, onSubmit }: InputFormProps) {
+  const t = useTranslations("form");
+
+  const RIR_OPTIONS = [
+    { value: "0", label: t("rir0"), icon: "🔥" },
+    { value: "1", label: t("rir1"), icon: "💪" },
+    { value: "2", label: t("rir2"), icon: "😊" },
+    { value: "3", label: t("rir3"), icon: "😌" },
+  ];
+
   const handleBodyWeightChange = (value: string) => {
     onChange({ ...formData, bodyWeight: value });
   };
@@ -47,14 +50,14 @@ export default function InputForm({ formData, onChange, onSubmit }: InputFormPro
       {/* 체중 입력 */}
       <div>
         <label className="block text-sm font-medium text-muted mb-1.5">
-          체중 (kg)
+          {t("bodyWeight")}
         </label>
         <input
           type="number"
           inputMode="decimal"
           step="0.1"
           min="0"
-          placeholder="80"
+          placeholder={t("bodyWeightPlaceholder")}
           value={formData.bodyWeight}
           onChange={(e) => handleBodyWeightChange(e.target.value)}
           className="w-full rounded-lg border border-card-border bg-card px-4 py-3 text-foreground placeholder-muted/50 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
@@ -62,34 +65,34 @@ export default function InputForm({ formData, onChange, onSubmit }: InputFormPro
       </div>
 
       {/* 종목별 입력 */}
-      {LIFTS.map(({ key, label, emoji }) => (
+      {LIFTS.map(({ key, emoji }) => (
         <div key={key} className="rounded-lg border border-card-border bg-card p-4">
           <h3 className="mb-3 text-sm font-semibold text-foreground">
-            {emoji} {label}
+            {emoji} {t(key)}
           </h3>
           <div className="grid grid-cols-2 gap-3">
             <div>
-              <label className="block text-xs text-muted mb-1">중량 (kg)</label>
+              <label className="block text-xs text-muted mb-1">{t("weight")}</label>
               <input
                 type="number"
                 inputMode="decimal"
                 step="0.5"
                 min="0"
-                placeholder="100"
+                placeholder={t("weightPlaceholder")}
                 value={formData[key].weight}
                 onChange={(e) => handleLiftChange(key, "weight", e.target.value)}
                 className="w-full rounded-lg border border-card-border bg-background px-3 py-2.5 text-foreground placeholder-muted/50 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
               />
             </div>
             <div>
-              <label className="block text-xs text-muted mb-1">반복 횟수</label>
+              <label className="block text-xs text-muted mb-1">{t("reps")}</label>
               <input
                 type="number"
                 inputMode="numeric"
                 step="1"
                 min="1"
                 max="30"
-                placeholder="5"
+                placeholder={t("repsPlaceholder")}
                 value={formData[key].reps}
                 onChange={(e) => handleLiftChange(key, "reps", e.target.value)}
                 className="w-full rounded-lg border border-card-border bg-background px-3 py-2.5 text-foreground placeholder-muted/50 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
@@ -98,7 +101,7 @@ export default function InputForm({ formData, onChange, onSubmit }: InputFormPro
           </div>
           <div className="mt-3">
             <label className="block text-xs text-muted mb-1.5">
-              몇 개 더 할 수 있었나요?
+              {t("rirQuestion")}
             </label>
             <div className="grid grid-cols-4 gap-1.5">
               {RIR_OPTIONS.map((opt) => (
@@ -126,7 +129,7 @@ export default function InputForm({ formData, onChange, onSubmit }: InputFormPro
         type="submit"
         className="w-full rounded-lg bg-primary py-3.5 text-base font-bold text-white transition-colors hover:bg-primary-hover active:scale-[0.98]"
       >
-        1RM 계산하기
+        {t("submit")}
       </button>
     </form>
   );

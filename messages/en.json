@@ -1,0 +1,104 @@
+{
+  "meta": {
+    "title": "SBD 1RM Calculator | Squat Bench Press Deadlift 1RM",
+    "titleTemplate": "%s | SBD 1RM Calculator",
+    "description": "Calculate your Squat, Bench Press, and Deadlift 1RM. Check your SBD total, Wilks score, and strength level based on body weight.",
+    "siteName": "SBD 1RM Calculator",
+    "keywords": "1RM calculator, SBD calculator, powerlifting calculator, squat 1RM, bench press 1RM, deadlift 1RM, SBD total, Wilks score calculator, strength level, powerlifting total"
+  },
+  "header": {
+    "title": "SBD 1RM Calculator",
+    "subtitle": "Squat · Bench Press · Deadlift"
+  },
+  "form": {
+    "bodyWeight": "Body Weight (kg)",
+    "bodyWeightPlaceholder": "80",
+    "weight": "Weight (kg)",
+    "weightPlaceholder": "100",
+    "reps": "Reps",
+    "repsPlaceholder": "5",
+    "squat": "Squat",
+    "bench": "Bench Press",
+    "deadlift": "Deadlift",
+    "rirQuestion": "How many more reps could you do?",
+    "rir0": "Went to failure",
+    "rir1": "1 more possible",
+    "rir2": "2 more possible",
+    "rir3": "3 more possible",
+    "submit": "Calculate 1RM"
+  },
+  "result": {
+    "heading": "Results",
+    "squat": "Squat",
+    "bench": "Bench Press",
+    "deadlift": "Deadlift",
+    "kg": "kg"
+  },
+  "summary": {
+    "heading": "📊 Summary",
+    "total": "SBD Total",
+    "wilks": "Wilks",
+    "level": "Level",
+    "kg": "kg",
+    "points": "pts"
+  },
+  "faq": {
+    "heading": "Frequently Asked Questions",
+    "items": [
+      {
+        "q": "What is 1RM?",
+        "a": "1RM (One Rep Max) is the maximum weight you can lift for a single repetition. It is estimated using the Epley, Brzycki, and NSCA formulas based on the weight and reps you performed."
+      },
+      {
+        "q": "What SBD total is considered intermediate?",
+        "a": "It varies by body weight, but generally a total of 4–5 times your body weight is considered intermediate. For example, at 80 kg body weight, an SBD total of 320–400 kg would be intermediate level."
+      },
+      {
+        "q": "What is a Wilks score?",
+        "a": "The Wilks score is a coefficient used to fairly compare lifters of different body weights. A score above 300 is considered intermediate, and above 400 is advanced."
+      },
+      {
+        "q": "How are strength levels categorized?",
+        "a": "Levels are based on the ratio of your total to body weight: Beginner → Novice → Intermediate → Advanced → Elite, across 5 tiers."
+      },
+      {
+        "q": "How do I use the total-to-bodyweight ratio?",
+        "a": "The ratio of your SBD total to body weight is an objective measure of relative strength. The higher the ratio, the greater your relative strength."
+      }
+    ]
+  },
+  "errors": {
+    "invalidBodyWeight": "Please enter a valid body weight.",
+    "maxReps": "Maximum reps allowed is 30.",
+    "noLift": "Please enter weight and reps for at least one lift."
+  },
+  "footer": {
+    "text": "Based on Epley · Brzycki · NSCA formulas · Male Wilks coefficients"
+  },
+  "jsonLd": {
+    "appName": "SBD 1RM Calculator",
+    "appDescription": "Calculate your Squat, Bench Press, and Deadlift 1RM. Check your SBD total, Wilks score, and strength level.",
+    "faq": [
+      {
+        "q": "What is 1RM?",
+        "a": "1RM (One Rep Max) is the maximum weight you can lift for a single repetition. Since it's difficult to test directly, it is estimated using the Epley, Brzycki, and NSCA formulas based on the weight and reps you performed."
+      },
+      {
+        "q": "What SBD total is considered intermediate?",
+        "a": "It varies by body weight, but generally a total of 4–5 times your body weight is considered intermediate. For example, at 80 kg body weight, an SBD total of 320–400 kg would be intermediate. Using the Wilks score provides a more objective assessment."
+      },
+      {
+        "q": "What is a Wilks score?",
+        "a": "The Wilks score is a coefficient used to fairly compare lifters of different body weights. It adjusts your SBD total using the Wilks coefficient. A score above 300 is intermediate, and above 400 is advanced."
+      },
+      {
+        "q": "How is the 1RM for Squat, Bench Press, and Deadlift calculated?",
+        "a": "Enter the weight and reps you performed, and the 1RM is predicted by averaging the Epley, Brzycki, and NSCA formulas. Selecting how many more reps you could have done improves accuracy."
+      },
+      {
+        "q": "How are strength levels categorized?",
+        "a": "Strength levels are based on the ratio of your SBD total to body weight: Beginner, Novice, Intermediate, Advanced, and Elite across 5 tiers."
+      }
+    ]
+  }
+}

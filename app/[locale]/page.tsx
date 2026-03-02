@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 import type { FormData, CalculationResult } from "@/types";
 import { calcOneRm } from "@/utils/oneRm";
 import { calcWilks } from "@/utils/wilks";
@@ -9,6 +10,7 @@ import InputForm from "@/components/InputForm";
 import ResultCard from "@/components/ResultCard";
 import SummaryCard from "@/components/SummaryCard";
 import FaqSection from "@/components/FaqSection";
+import LanguageSwitcher from "@/components/LanguageSwitcher";
 
 // TODO: Supabase DB 연동 위치
 // TODO: 기록 저장 API 추가 위치
@@ -22,6 +24,7 @@ const INITIAL_FORM: FormData = {
 };
 
 export default function Home() {
+  const t = useTranslations();
   const [formData, setFormData] = useState<FormData>(INITIAL_FORM);
   const [result, setResult] = useState<CalculationResult | null>(null);
   const [error, setError] = useState<string>("");
@@ -37,7 +40,7 @@ export default function Home() {
 
     const bodyWeight = parseFloat(formData.bodyWeight);
     if (!bodyWeight || bodyWeight <= 0) {
-      setError("체중을 올바르게 입력해주세요.");
+      setError(t("errors.invalidBodyWeight"));
       return;
     }
 
@@ -46,14 +49,14 @@ export default function Home() {
       if (!isLiftFilled(formData[lift])) continue;
       const r = parseInt(formData[lift].reps, 10);
       if (r > 30) {
-        setError("반복 횟수는 최대 30회까지 입력 가능합니다.");
+        setError(t("errors.maxReps"));
         return;
       }
     }
 
     const hasAny = lifts.some((l) => isLiftFilled(formData[l]));
     if (!hasAny) {
-      setError("최소 1개 종목의 중량과 반복 횟수를 입력해주세요.");
+      setError(t("errors.noLift"));
       return;
     }
 
@@ -82,12 +85,15 @@ export default function Home() {
     <div className="min-h-screen bg-background">
       <div className="mx-auto max-w-md px-4 py-8">
         {/* 헤더 */}
-        <header className="mb-8 text-center">
+        <header className="mb-8 text-center relative">
+          <div className="absolute right-0 top-0">
+            <LanguageSwitcher />
+          </div>
           <h1 className="text-2xl font-bold text-foreground">
-            3대중량 1RM 계산기
+            {t("header.title")}
           </h1>
           <p className="mt-1 text-sm text-muted">
-            스쿼트 · 벤치프레스 · 데드리프트
+            {t("header.subtitle")}
           </p>
         </header>
 
@@ -108,12 +114,12 @@ export default function Home() {
         {/* 결과 표시 */}
         {result && (
           <div className="mt-8 space-y-4">
-            <h2 className="text-lg font-bold text-foreground">결과</h2>
+            <h2 className="text-lg font-bold text-foreground">{t("result.heading")}</h2>
 
             <div className="grid grid-cols-1 gap-3">
-              {result.squat && <ResultCard name="스쿼트" emoji="🏋️" result={result.squat} />}
-              {result.bench && <ResultCard name="벤치프레스" emoji="💪" result={result.bench} />}
-              {result.deadlift && <ResultCard name="데드리프트" emoji="🔥" result={result.deadlift} />}
+              {result.squat && <ResultCard name={t("result.squat")} emoji="🏋️" result={result.squat} />}
+              {result.bench && <ResultCard name={t("result.bench")} emoji="💪" result={result.bench} />}
+              {result.deadlift && <ResultCard name={t("result.deadlift")} emoji="🔥" result={result.deadlift} />}
             </div>
 
             {result.total != null && result.wilks != null && result.level && (
@@ -131,7 +137,7 @@ export default function Home() {
 
         {/* 푸터 */}
         <footer className="mt-12 text-center text-xs text-muted/50">
-          <p>Epley · Brzycki · NSCA 공식 기반 · 남성 Wilks 계수</p>
+          <p>{t("footer.text")}</p>
         </footer>
       </div>
     </div>
